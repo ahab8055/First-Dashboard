@@ -1,0 +1,133 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+ <!-- BEGIN HEAD -->
+<head>
+    {% block attachment %}
+        <meta charset="UTF-8" />
+    <title>Dashboard</title>
+     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+     <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <!-- GLOBAL STYLES -->
+    <!-- GLOBAL STYLES -->
+
+    <link rel="stylesheet" href="{% static 'plugins/social-buttons/social-buttons.css' %}" />
+     
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/MoneAdmin.css' %}" />
+    <link rel="stylesheet" href="{% static 'plugins/Font-Awesome/css/font-awesome.css' %}" />
+    <!--END GLOBAL STYLES -->
+
+    <!-- PAGE LEVEL STYLES -->
+
+ <link href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'plugins/uniform/themes/default/css/uniform.default.css' %}" />
+<link rel="stylesheet" href="{% static 'plugins/inputlimiter/jquery.inputlimiter.1.0.css' %}" />
+<link rel="stylesheet" href="{% static 'plugins/chosen/chosen.min.css' %}" />
+<link rel="stylesheet" href="{% static 'plugins/colorpicker/css/colorpicker.css' %}" />
+<link rel="stylesheet" href="{% static 'plugins/tagsinput/jquery.tagsinput.css' %}" />
+<link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker-bs3.css' %}" />
+<link rel="stylesheet" href="{% static 'plugins/datepicker/css/datepicker.css' %}" />
+<link rel="stylesheet" href="{% static 'plugins/timepicker/css/bootstrap-timepicker.min.css' %}" />
+<link rel="stylesheet" href="{% static 'plugins/switch/static/stylesheets/bootstrap-switch.css' %}" />
+
+    <!-- END PAGE LEVEL  STYLES -->
+   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    {% endblock %}
+</head>
+{% block content %}
+    <div id="content">
+
+        <div class="inner">
+            <div class="row">
+                            <div class="col-lg-9">
+                                <h2 style="margin: 35px 0px 0px 25px;"> Annual Fee </h2>
+                            </div>
+                            {% include 'searchbar.html' %}
+                        </div>
+                <br>
+                <hr>
+            <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                <form method="post" action="{% url 'fee:annualfee' %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                            <div class="col-lg-2">
+                                            {{form.year}}
+                                            </div>
+                                </div>
+                                <input type="submit" value="Go" class="btn btn-primary btn-sm " />
+                            </form>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                        <tr>
+                                            <th>Year</th>
+                                            <th>Class</th>
+                                            <th>Fee paid</th>
+                                            <th>Fee pending</th>
+                                        </tr>
+                                    </thead>
+                                <tbody>
+                                    {% for key, value_list  in data.items %}
+                                        <tr class="odd gradeX">
+                                            <td>{{ year }}</td>
+                                            <td>{{ key }}</td>
+                                            {% for value in value_list %}
+                                            <td>{{ value.clas_fee__sum }}</td>
+                                                {% endfor %}
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+{% block script %}
+ 
+      
+    <script src="{% static 'plugins/modernizr-2.6.2-respond-1.1.0.min.js' %}"></script>
+    <!-- END GLOBAL SCRIPTS -->
+
+
+      <!-- PAGE LEVEL SCRIPT-->
+ <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+ <script src="{% static 'plugins/uniform/jquery.uniform.min.js' %}"></script>
+<script src="{% static 'plugins/inputlimiter/jquery.inputlimiter.1.3.1.min.js' %}"></script>
+<script src="{% static 'plugins/chosen/chosen.jquery.min.js' %}"></script>
+<script src="{% static 'plugins/colorpicker/js/bootstrap-colorpicker.js' %}"></script>
+<script src="{% static 'plugins/tagsinput/jquery.tagsinput.min.js' %}"></script>
+<script src="{% static 'plugins/validVal/js/jquery.validVal.min.js' %}"></script>
+<script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+<script src="{% static 'plugins/daterangepicker/moment.min.js' %}"></script>
+<script src="{% static 'plugins/datepicker/js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'plugins/timepicker/js/bootstrap-timepicker.min.js' %}"></script>
+<script src="{% static 'plugins/switch/static/js/bootstrap-switch.min.js' %}"></script>
+<script src="{% static 'plugins/jquery.dualListbox-1.3/jquery.dualListBox-1.3.min.js' %}"></script>
+<script src="{% static 'plugins/autosize/jquery.autosize.min.js' %}"></script>
+<script src="{% static 'plugins/jasny/js/bootstrap-inputmask.js' %}"></script>
+       <script src="{% static 'js/formsInit.js' %}"></script>
+        <script>
+            $(function () { formInit(); });
+        </script>
+{% endblock %}
+</html>

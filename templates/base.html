@@ -1,0 +1,239 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block attachment %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %}" />
+</head>
+<body class="padTop53 ">
+<div id="wrap" >
+{% block info %}
+    {% block header %}
+        
+    {% endblock %}
+{% endblock %}
+{% block sidebar %}
+    <!-- MENU SECTION -->
+       <div id="left" >
+            <div class="media user-media well-small">
+                <a class="user-link" href="#">
+                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="{% static 'img/user.gif' %}" />
+                </a>
+                <br />
+                <div class="media-body">
+                    <h5 class="media-heading">{{ request.user | capfirst }}</h5>
+                    <ul class="list-unstyled user-info">
+
+                        <li>
+                             <a class="btn btn-success bt\n-xs btn-circle" style="width: 10px;height: 12px;"></a> Online
+
+                        </li>
+
+                    </ul>
+                </div>
+                <br />
+            </div>
+
+            <ul id="menu" class="collapse">
+
+
+                <li class="panel active">
+                    <a href="{% url 'index' %}" >
+                        <i class="icon-table"></i> Dashboard
+
+
+                    </a>
+                </li>
+
+
+
+                <li class="panel ">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
+                        <i class="icon-tasks"> </i> Classes
+
+                        <span class="pull-right">
+                          <i class="icon-angle-left"></i>
+                        </span>
+                       &nbsp; <span class="label label-default"></span>&nbsp;
+                    </a>
+                    <ul class="collapse" id="component-nav">
+                        <li class=""><a href="{% url 'class:students' %}"> Students </a></li>
+                        <li class=""><a href="{% url 'class:middel' %}"> Middle </a></li>
+                        <li class=""><a href="{% url 'class:nineth' %}"> Nineth </a></li>
+                        <li class=""><a href="{% url 'class:tenth' %}"> Tenth </a></li>
+                        <li class=""><a href="{% url 'class:firstyear' %}"> First year </a></li>
+                        <li class=""><a href="{% url 'class:secondyear' %}"> Second year </a></li>
+                        <li class=""><a href="{% url 'class:ba' %}"> B.A </a></li>
+                        <li class=""><a href="{% url 'class:bsc' %}"> B.Sc </a></li>
+                        <li class=""><a href="{% url 'class:bcom' %}"> B.Com </a></li>
+                    </ul>
+                </li>
+                <li class="panel ">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle collapsed" data-target="#form-nav">
+                        <i class="icon-money">  Fees</i>
+
+                        <span class="pull-right">
+                            <i class="icon-angle-left"></i>
+                        </span>
+                          &nbsp; <span class="label label-success"></span>&nbsp;
+                    </a>
+                    <ul class="collapse" id="form-nav">
+                        <li class=""><a href="{% url 'fee:monthlyfee' %}"> Monthly </a></li>
+                        <li class=""><a href="{% url 'fee:annualfee' %}"> Annual </a></li>
+                        <li class="">
+                            <a href="#" data-parent="#" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav2">
+                                Per Class
+
+                                <span class="pull-right">
+                                    <i class="icon-angle-left"></i>
+                                </span>
+                               &nbsp; <span class="label label-default"></span>&nbsp;
+                            </a>
+                            <ul class="collapse" id="component-nav2">
+
+                                <li class=""><a href="{% url 'fee:middelfee' %}"> Middle </a></li>
+                                 <li class=""><a href="{% url 'fee:ninethfee' %}"> Nineth </a></li>
+                                <li class=""><a href="{% url 'fee:tenthfee' %}"> Tenth </a></li>
+                                <li class=""><a href="{% url 'fee:firstyearfee' %}"> First year </a></li>
+                                <li class=""><a href="{% url 'fee:secondyearfee' %}"> Second year </a></li>
+                                <li class=""><a href="{% url 'fee:bafee' %}"> B.A </a></li>
+                                  <li class=""><a href="{% url 'fee:bscfee' %}"> B.Sc </a></li>
+                                 <li class=""><a href="{% url 'fee:bcomfee' %}"> B.Com </a></li>
+                            </ul>
+                        </li>
+                        <li class=""><a href="{% url 'fee:pendingfee' %}"> Pendings </a></li>
+                    </ul>
+                </li>
+
+                <li class="panel">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#pagesr-nav">
+                        <i class="icon-male"></i> Teachers
+
+                        <span class="pull-right">
+                            <i class="icon-angle-left"></i>
+                        </span>
+                          &nbsp; <span class="label label-info"></span>&nbsp;
+                    </a>
+                    <ul class="collapse" id="pagesr-nav">
+                        <li class=""><a href="{% url 'teacher:all' %}"> Teachers </a></li>
+                        <li class="">
+                            <a href="#" data-parent="#" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav3">
+                                Per Class
+
+                                <span class="pull-right">
+                                    <i class="icon-angle-left"></i>
+                                </span>
+                               &nbsp; <span class="label label-default"></span>&nbsp;
+                            </a>
+                            <ul class="collapse" id="component-nav3">
+                                <li class=""><a href="{% url 'teacher:middelteacher' %}"> Middle </a></li>
+                                 <li class=""><a href="{% url 'teacher:ninethteacher' %}"> Nineth </a></li>
+                                <li class=""><a href="{% url 'teacher:tenthteacher' %}"> Tenth </a></li>
+                                <li class=""><a href="{% url 'teacher:firstyearteacher' %}"> First year </a></li>
+                                <li class=""><a href="{% url 'teacher:secondyearteacher' %}"> Second year </a></li>
+                                <li class=""><a href="{% url 'teacher:bateacher' %}"> B.A </a></li>
+                                  <li class=""><a href="{% url 'teacher:bscteacher' %}"> B.Sc </a></li>
+                                 <li class=""><a href="{% url 'teacher:bcomteacher' %}"> B.Com </a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="#" data-parent="#" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav4">
+                                Per Subject
+
+                                <span class="pull-right">
+                                    <i class="icon-angle-left"></i>
+                                </span>
+                               &nbsp; <span class="label label-default"></span>&nbsp;
+                            </a>
+                            <ul class="collapse" id="component-nav4">
+
+                                <li class=""><a href="{% url 'teacher:science' %}"> Science </a></li>
+                                <li class=""><a href="{% url 'teacher:arts' %}"> Arts </a></li>
+                                <li class=""><a href="{% url 'teacher:bio' %}"> Bio </a></li>
+                                <li class=""><a href="{% url 'teacher:physics' %}"> Physics </a></li>
+                                <li class=""><a href="{% url 'teacher:chemistry' %}"> Chemistry </a></li>
+                                <li class=""><a href="{% url 'teacher:computer' %}"> Computer </a></li>
+                                <li class=""><a href="{% url 'teacher:english' %}"> English </a></li>
+                                <li class=""><a href="{% url 'teacher:urdu' %}"> Urdu </a></li>
+                                <li class=""><a href="{% url 'teacher:islamiyat' %}"> Islamiyat </a></li>
+                                <li class=""><a href="{% url 'teacher:pakstudies' %}"> Pak Studies </a></li>
+                                <li class=""><a href="{% url 'teacher:stat' %}"> Statictics </a></li>
+                                <li class=""><a href="{% url 'teacher:economics' %}"> Economics </a></li>
+                                <li class=""><a href="{% url 'teacher:accounting' %}"> Accounting </a></li>
+                                <li class=""><a href="{% url 'teacher:commerce' %}"> Commerce </a></li>
+                                <li class=""><a href="{% url 'teacher:banking' %}"> Banking </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="panel">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#chart-nav">
+                        <i class="icon-bar-chart"></i> Charts
+
+                        <span class="pull-right">
+                            <i class="icon-angle-left"></i>
+                        </span>
+                          &nbsp; <span class="label label-danger"></span>&nbsp;
+                    </a>
+                    <ul class="collapse" id="chart-nav">
+
+
+
+                        <li><a href="{% url 'charts:feechart' %}"> Fee  </a></li>
+                        <li><a href="{% url 'charts:progresschart' %}"> Progress </a></li>
+                        <li><a href="{% url 'charts:profitchart' %}"> Profit  </a></li>
+                        <li><a href="{% url 'charts:attendancechart' %}"> Attendence </a></li>
+                    </ul>
+                </li>
+
+                <li class="panel">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#DDL-nav">
+                        <i class=" icon-ok"></i> Attendence
+
+                        <span class="pull-right">
+                            <i class="icon-angle-left"></i>
+                        </span>
+                    </a>
+                    <ul class="collapse" id="DDL-nav">
+                        <li><a href="{% url 'attendance:takeattendance' %}"> Attendance </a></li>
+                        <li><a href="{% url 'attendance:middelattendance' %}"> Middle </a></li>
+                        <li><a href="{% url 'attendance:ninethattendance' %}"> Ninth </a></li>
+                        <li><a href="{% url 'attendance:tenthattendance' %}"> Tenth </a></li>
+                        <li><a href="{% url 'attendance:firstyearattendance' %}"> First year </a></li>
+                        <li><a href="{% url 'attendance:secondyearattendance' %}"> Second year </a></li>
+                        <li><a href="{% url 'attendance:baattendance' %}"> B.A </a></li>
+                        <li><a href="{% url 'attendance:bscattendance' %}"> Bsc </a></li>
+                        <li><a href="{% url 'attendance:bcomattendance' %}"> Bcom </a></li>
+                    </ul>
+                </li>
+                 <li class="panel">
+                        <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#blank-nav">
+                            <i class="icon-plus-sign"></i> Registration
+
+                            <span class="pull-right">
+                                <i class="icon-angle-left"></i>
+                            </span>
+                             &nbsp; <span class="label label-success"></span>&nbsp;
+                        </a>
+                        <ul class="collapse" id="blank-nav">
+
+                            <li><a href="{% url 'studentregisteration' %}"> Student  </a></li>
+                            <li><a href="{% url 'teacherregistration' %}"> Teacher  </a></li>
+                            <li><a href="{% url 'adminregistration' %}"> Admin  </a></li>
+                        </ul>
+                </li>
+                <li><a href="{% url 'logedout' %}"><i class="icon-signout"></i> Logout </a></li>
+
+            </ul>
+
+        </div>
+        <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'plugins/jquery-2.0.3.min.js' %}"></script>
+
+{% endblock %}
+{% block content %}
+{% endblock %}
+</div>
+{% block script %}{% endblock %}
+</body>
+</html>

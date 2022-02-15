@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+                            <form action="{% url 'search' %}" method="post">
+                                {% csrf_token %}
+                                <div class="input-group" style="margin: 35px 25px 0px 0px;">
+                                    <input type="text" placeholder="search ..." class="form-control" name="search" />
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                                    </span>
+                                </div>
+                            </form>
+</body>
+</html>

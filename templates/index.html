@@ -1,0 +1,212 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% load laiq %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block attachment %}
+        <meta charset="UTF-8" />
+    <title>Dashboard</title>
+     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+     
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/MoneAdmin.css' %}" />
+    <link rel="stylesheet" href="{% static 'plugins/Font-Awesome/css/font-awesome.css' %}" />
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'plugins/social-buttons/social-buttons.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/layout2.css' %}" />
+    <link href="{% static 'plugins/flot/examples/examples.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'plugins/timeline/timeline.css' %}" />
+  
+    {% endblock %}
+</head>
+    {% block content %}
+
+        <div id="content" style="width: 83%">
+                <div class="inner">
+                    <div class="row" >
+                            <div class="col-lg-9 ">
+                                <h2 style="margin: 35px 0px 0px 25px;"> Admin Dashboard </h2>
+                            </div>
+                            {% include 'searchbar.html' %}
+                        </div>
+                <br>
+                <hr>
+                    <div class="row" style="border: 0ch;">
+                    <div class="col-lg-7">
+                        <div class="panel panel-success" style="margin-top: 1.5%; margin-left: 3%">
+                            <div class="panel-heading" style="background-color: lightgreen; color: black;">
+                                <i class="icon-comments"></i>
+                                New Message
+                            </div>
+                            <div class="panel-body">
+                                <ul class="chat">
+                                    <li class="left clearfix">
+                                        <span class="chat-img pull-left">
+                                            <img src="{% static 'img/1.png' %}" alt="User Avatar" class="img-circle" />
+                                        </span>
+                                        <div class="chat-body clearfix">
+                                            <div class="header">
+                                                <strong class="primary-font "> Jack Sparrow </strong>
+                                                <small class="pull-right text-muted label label-danger">
+                                                    <i class="icon-time"></i> 12 mins ago
+                                                </small>
+                                            </div>
+                                             <br />
+                                            <p>
+                                                Lorem ipsum dolor sit amet, bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="right clearfix">
+                                        <span class="chat-img pull-right">
+                                            <img src="{% static 'img/2.png' %}" alt="User Avatar" class="img-circle" />
+                                        </span>
+                                        <div class="chat-body clearfix">
+                                            <div class="header">
+                                                <small class=" text-muted label label-info">
+                                                    <i class="icon-time"></i> 13 mins ago</small>
+                                                <strong class="pull-right primary-font"> Jhony Deen</strong>
+                                            </div>
+                                            <br />
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur a dolor, quis ullamcorper ligula sodales.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="left clearfix">
+                                        <span class="chat-img pull-left">
+                                            <img src="{% static 'img/3.png' %}" alt="User Avatar" class="img-circle" />
+                                        </span>
+                                        <div class="chat-body clearfix">
+                                            <div class="header">
+                                                <strong class="primary-font"> Jack Sparrow </strong>
+                                                <small class="pull-right text-muted label label-warning">
+                                                    <i class="icon-time"></i> 12 mins ago
+                                                </small>
+                                            </div>
+                                             <br />
+                                            <p>
+                                                Lorem ipsum dolor sit amet, bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="right clearfix">
+                                        <span class="chat-img pull-right">
+                                            <img src="{% static 'img/4.png' %}" alt="User Avatar" class="img-circle" />
+                                        </span>
+                                        <div class="chat-body clearfix">
+                                            <div class="header">
+                                                <small class=" text-muted label label-primary">
+                                                    <i class="icon-time"></i> 13 mins ago</small>
+                                                <strong class="pull-right primary-font"> Jhony Deen</strong>
+                                            </div>
+                                            <br />
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur a dolor, quis ullamcorper ligula sodales.
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="right" class="col-lg" style="border: 0; margin-left: 22%;">
+
+            <div class="well well-small" style="background-color: powderblue;color: black;">
+                <ul class="list-unstyled">
+                    <li>Total Presents &nbsp: <span>&nbsp{{ tpresents }}</span></li>
+                    <li>&nbspTotal Absents &nbsp: <span>&nbsp{{ tabsents }}</span></li>
+                    <li>Fee Collected &nbsp: <span>&nbsp{{ tpaid.clas_fee__sum }}</span></li>
+                    <li>&nbsp&nbspFee Pending &nbsp: <span>&nbsp{{ tpending.clas_fee__sum }}</span></li>
+                </ul>
+            </div>
+            <div class="well well-small" style="background-color: powderblue;">
+                <span>Attendence</span><span class="pull-right"><small>{{ percentst }}%</small></span>
+
+                <div class="progress mini">
+                    <div class="progress-bar progress-bar-info" style="width: {{ percentst }}%"></div>
+                </div>
+                <span>Progress</span><span class="pull-right"><small>40%</small></span>
+
+                <div class="progress mini">
+                    <div class="progress-bar progress-bar-success" style="width: 40%"></div>
+                </div>
+                {% if profit < 0 %}
+                <span>Loss</span><span class="pull-right"><small>{{ profit|abs }}%</small></span>
+                {% else %}
+                <span>Profit</span><span class="pull-right"><small>{{ profit }}%</small></span>
+                {% endif %}
+                <div class="progress mini">
+                    <div class="progress-bar progress-bar-warning" style="width: {{ profit }}%"></div>
+                </div>
+                <span>Fee collection</span><span class="pull-right"><small>{{ percentfee }}%</small></span>
+
+                <div class="progress mini">
+                    <div class="progress-bar progress-bar-danger" style="width: {{ percentfee }}%"></div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+                </div>
+                <!-- END COMMENT AND NOTIFICATION  SECTION -->
+                   <!-- CHART & CHAT  SECTION -->
+                   <div class="panel panel-default" style="border: 0ch;">
+                    <div class="panel-heading" style="background-color: lightgreen; color: black;">
+                       Categories Chart
+                    </div>
+
+                    <div class="panel-body" >
+
+                    <div class="demo-container">
+                    <div id="placeholder" class="demo-placeholder" style="padding: 0px; position: relative;"><canvas class="flot-base" width="659" height="413" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 659px; height: 413px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 174px; top: 395px; left: 42px; text-align: center;">January</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 174px; top: 395px; left: 147px; text-align: center;">February</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 174px; top: 395px; left: 262px; text-align: center;">March</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 174px; top: 395px; left: 375px; text-align: center;">April</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 174px; top: 395px; left: 484px; text-align: center;">May</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 174px; top: 395px; left: 590px; text-align: center;">June</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 382px; left: 9px; text-align: right;">0.0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 327px; left: 9px; text-align: right;">2.5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 273px; left: 9px; text-align: right;">5.0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 218px; left: 9px; text-align: right;">7.5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 164px; left: 2px; text-align: right;">10.0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 109px; left: 2px; text-align: right;">12.5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 55px; left: 2px; text-align: right;">15.0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 2px; text-align: right;">17.5</div></div></div><canvas class="flot-overlay" width="659" height="413" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 659px; height: 413px;"></canvas></div>
+                </div>
+                </div>
+
+                    </div>
+                <div class="panel-body">
+                        <div class="panel-heading" style="background-color: lightgreen; color: black;">
+                                Chart
+                             </div>
+
+			<div class="demo-container">
+			<div id="placeholderStack" class="demo-placeholder" style="padding: 0px; position: relative;"><canvas class="flot-base" width="657" height="413" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 657px; height: 413px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 395px; left: 17px; text-align: center;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 395px; left: 76px; text-align: center;">1</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 395px; left: 135px; text-align: center;">2</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 395px; left: 195px; text-align: center;">3</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 395px; left: 254px; text-align: center;">4</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 395px; left: 313px; text-align: center;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 395px; left: 373px; text-align: center;">6</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 395px; left: 432px; text-align: center;">7</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 395px; left: 491px; text-align: center;">8</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 395px; left: 551px; text-align: center;">9</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 68px; top: 395px; left: 607px; text-align: center;">10</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 382px; left: 8px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 327px; left: 2px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 273px; left: 2px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 218px; left: 2px; text-align: right;">30</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 164px; left: 2px; text-align: right;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 109px; left: 2px; text-align: right;">50</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 55px; left: 2px; text-align: right;">60</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 2px; text-align: right;">70</div></div></div><canvas class="flot-overlay" width="657" height="413" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 657px; height: 413px;"></canvas></div>
+		</div>
+                                <p class="stackControls">
+			<button class="btn btn-primary" style="background-color: lightgreen;color: black;">With stacking</button>
+			<button class="btn btn-primary" style="background-color: lightgreen;color: black;">Without stacking</button>
+		</p>
+
+		<p class="graphControls">
+			<button class="btn btn-primary" style="background-color: lightgreen;color: black;">Bars</button>
+			<button class="btn btn-primary" style="background-color: lightgreen;color: black;">Lines</button>
+			<button class="btn btn-primary" style="background-color: lightgreen;color: black;">Lines with steps</button>
+		</p>
+		</div>
+                </div>
+        </div>
+
+    {% endblock %}
+        {% block script %}
+
+     
+      
+    <script src="{% static 'plugins/modernizr-2.6.2-respond-1.1.0.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'plugins/jquery-2.0.3.min.js' %}"></script>
+    <script src="{% static 'plugins/flot/jquery.flot.js' %}"></script>
+    <script src="{% static 'plugins/flot/jquery.flot.resize.js' %}"></script>
+    <script src="{% static 'plugins/flot/jquery.flot.time.js' %}"></script>
+     <script  src="{% static 'plugins/flot/jquery.flot.stack.js' %}"></script>
+    <script src="{% static 'js/for_index.js' %}"></script>
+   
+{% endblock %}
+
+</html>

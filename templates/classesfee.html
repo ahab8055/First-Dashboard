@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+<div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>Roll #</th>
+                                        <th>Name</th>
+                                        <th>Father name</th>
+                                        <th>Contact #</th>
+                                        <th>Fee status</th>
+                                        <th>Date</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for datum in data %}
+                                <tr class="odd gradeX">
+                                        <td>{{ datum.roll }}</td>
+                                        <td>{{datum.roll__student_name}}</td>
+                                        <td>{{ datum.roll__father_name}}</td>
+                                        <td>{{ datum.roll__phone}}</td>
+                                        <td>{{ datum.fee_status}}</td>
+                                        <td>{{ month }}-{{ year }}</td>
+                                        <td><a href="{% url 'detail' datum.roll %}">Details</a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        <div class="col-lg-4" style="margin-left: 150px"><h4><b>Number of Students Fee Paid = {{ num }}</b></h4></div>
+                            <div class="col-lg-4"><h4><b>Number of Students Fee Pending = {{ num1 }}</b></h4></div>
+                        </div>
+
+                    </div>
+</body>
+</html>
