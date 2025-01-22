@@ -22,6 +22,6 @@ class Student_detail(models.Model):
     clas = models.CharField(max_length=30, choices=choice)
     clas_fee = models.IntegerField(validators=[MinValueValidator(1000)])
     subject = models.CharField(max_length=10)
-    date = models.DateField(default=timezone.now())
+    date = models.DateField(default=timezone.now)
     def __str__(self):
         return self.roll

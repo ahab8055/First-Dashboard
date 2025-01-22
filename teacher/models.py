@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 from django.core.validators import *
-from datetime import datetime
 
 
 class Teacher_Info(models.Model):
@@ -11,7 +10,7 @@ class Teacher_Info(models.Model):
     teacher_phone = models.CharField(max_length=12, validators=[MinLengthValidator(11)])
     teacher_cnic = models.CharField(max_length=15,validators=[MinLengthValidator(13)])
     teacher_addres = models.TextField(validators=[MinLengthValidator(15)])
-    doj = models.DateField(default=datetime.now())
+    doj = models.DateField(default=timezone.now)
     pay=models.IntegerField(validators=[MinValueValidator(1000)])
     def __str__(self):
         return self.teacher_name

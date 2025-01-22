@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [ '*']
 # Application definition
 
 INSTALLED_APPS = [
-    'module1.apps.Module1Config',
+    'module1',
     'fee',
     'attendance',
     'teacher',

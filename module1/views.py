@@ -10,7 +10,7 @@ from django.contrib.auth.models import *
 from datetime import *
 from fee.form import *
 from attendance.form import *
-from attendance.models import *
+from attendance.models import Student_attendance
 from django.core.mail import EmailMessage
 # Create your views here.
 count = 0
