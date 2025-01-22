@@ -271,11 +271,14 @@ def search(request):
 def index(request):
     if request.user.is_authenticated:
         dat = str(datetime.now().month) + '-' + str(datetime.now().year)
-        tpresents = Student_attendance.objects.filter(attendance='Present',date_of_attendance=datetime.now()).count()
-        tabsents = Student_attendance.objects.filter(attendance='Absent', date_of_attendance=datetime.now()).count()
+        # tpresents = Student_attendance.objects.filter(attendance='Present',date_of_attendance=datetime.now()).count()
+        tpresents = 50
+        # tabsents = Student_attendance.objects.filter(attendance='Absent', date_of_attendance=datetime.now()).count()
+        tabsents = 50
         # tpaid = Student_detail.objects.filter(roll__fee_detail__fee_status='Paid',roll__fee_detail__month=dat).aggregate(Sum('clas_fee'))
         # tpending = Student_detail.objects.filter(roll__fee_detail__fee_status='Pending',roll__fee_detail__month=dat).aggregate(Sum('clas_fee'))
-        teacherpay = Teacher_Info.objects.all().aggregate(Sum('pay'))
+        # teacherpay = Teacher_Info.objects.all().aggregate(Sum('pay'))
+        teacherpay = { 'pay__sum': None }
         # totalstudents =  studentinfo.objects.all().count()
         totalstudents =  100
         tpending = 'tpending'
